@@ -6,7 +6,7 @@
 
 :root {
   --text-color: white;
-  --bg-url: url(./img/Desktop/Background-black.jpg);
+  --bg-url: url(./img/Mobile/Background-black.jpg);
   --stroke-color: rgba(255, 255, 255, 0.5);
   --surface-color: rgba(255, 255, 255, 0.05);
   --surface-color-houver: rgba(255, 255, 255, 0.2);
@@ -18,7 +18,7 @@
 
 .light {
   --text-color: black;
-  --bg-url: url(./img/Desktop/Background-light.jpg);
+  --bg-url: url(./img/Mobile/Background-light.jpg);
   --stroke-color: rgba(0, 0, 0, 0.5);
   --surface-color: rgba(0, 0, 0, 0.05);
   --surface-color-houver: rgba(250, 250, 250, 0.5);
@@ -32,6 +32,7 @@ body {
   background-repeat: no-repeat;
   background-position: top center;
   background-size: cover;
+  height: 100vh;
 }
 
 body * {
@@ -40,7 +41,8 @@ body * {
 }
 
 .container {
-  width: 360px;
+  width: 100%;
+  max-width: 350px;
   margin: 56px auto 0px;
 
   padding: 0 24px;
@@ -91,6 +93,12 @@ body * {
   top: -15%;
   z-index: 1;
   /* transform: translateY(-50%); */
+
+  animation: slide-back 0.5s;
+}
+
+.switch button:hover{
+  outline: 8px solid var(--stroke-color);
 }
 
 .switch span {
@@ -107,8 +115,7 @@ body * {
 }
 
 .light .switch button {
-  right: 0;
-  left: initial;
+  animation: slide-in 0.5s forwards;
 }
 
 /* Lists */
@@ -203,4 +210,36 @@ footer a:hover {
   color: #000000;
   box-shadow: inset 200px 0 0 0 var(--footer-color);
   transition: 1s;
+}
+
+
+                             /* Media queries */
+
+ @media (min-width:700px) {
+  :root {
+    --bg-url: url(./img/Desktop/Background-black.jpg);
+  }
+  .light {
+    --bg-url:url(./img/Desktop/Background-light.jpg);
+  }
+
+
+ /* }                            Animation */
+
+ @keyframes slide-in {
+  from {
+    left: 0;
+  }
+  to {left: 50%;}
+ }
+}
+
+@keyframes slide-back {
+  from {
+    left: 50%;
+  }
+  to {
+    left: 0;
+  }
+  
 }
